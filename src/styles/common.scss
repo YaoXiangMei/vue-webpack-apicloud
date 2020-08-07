@@ -1,0 +1,429 @@
+html,body,div,section,header,footer,canvas,dl,dt,dd,p,h1,h2,h3,h4,h5,h6,ul,ol,li,canvas,img,input,textarea,button,pre{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	line-height: normal;
+	color: #333;
+	padding-bottom: constant(safe-area-inset-bottom);
+	background-color: #f5f5f5;
+}
+li{
+  list-style: none;
+}
+/**
+*@description 字体大小
+*example dg-f-s-16
+*/
+@each $i in 10 12 14 16 18 20 22 24 28 32 38 40 48 {
+	.dg-f-s-#{$i}{
+		font-size: #{$i}px
+	}
+}
+/**
+*@description 字体粗细
+*example dg-f-w-bold
+*/
+@each $i in normal bold bolder lighter {
+	.dg-f-w-#{$i}{
+		font-weight: #{$i}
+	}
+}
+/**
+*@description 字体对齐
+*example dg-t-a-l
+*/
+@each $full, $abbr in (left: l, center: c, right: r, justify: j) {
+	.dg-t-a-#{$abbr}{
+		text-align: #{$full}
+	}
+}
+/**
+*@description 字体颜色
+*example dg-t-c-1e844e
+*/
+@each $i in '1e844d' 333 666 999 f5f5f5 {
+	.dg-t-c-#{$i}{
+		color: unquote('##{$i}')
+	}
+}
+/**
+*@description 文字超出隐藏
+*example dg-e-1
+*/
+@for $i from 1 through 5 {
+	.dg-e-#{$i} {
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		word-break: break-all;
+		white-space: normal !important;
+		-webkit-line-clamp: #{$i};
+		-webkit-box-orient: vertical;
+	}
+}
+.dg-break-all{
+	word-break: break-all
+}
+/**
+*@description 背景颜色
+*example dg-bg-c-1e844e
+*/
+@each $i in '1e844d' f5f5f5 fff {
+	.dg-bg-c-#{$i}{
+		background-color: unquote('##{$i}')
+	}
+}
+/**
+*@description 边框
+*example dg-bd-1e844e
+*example dg-bd-t-1e844e
+*/
+@each $i in '1e844d' ddd efefef{
+	.dg-bd-#{$i}{
+		border: 1px solid unquote('##{$i}')
+	}
+	@each $fullInner, $abbrInner in (top: t, right: r, bottom: b, left: l) {
+		.dg-bd-#{$abbrInner}-#{$i}{
+			border-#{$fullInner}: 1px solid unquote('##{$i}')
+		}
+		.dg-bd-#{$abbrInner}-none{
+			border-#{$fullInner}: none
+		}
+	}
+}
+/**
+*@description 边框宽度
+*example dg-bd-w-2
+*/
+@for $i from 1 through 5{
+	.dg-bd-w-#{$i}{
+		border-width: #{$i}px
+	}
+}
+/**
+*@description 边框样式
+*example dg-bd-s-dotted
+*/
+@each $i in dotted solid double dashed {
+	.dg-bd-s-#{$i}{
+		border-style: #{$i}
+	}
+}
+/**
+*@description 圆角
+*example dg-bd-s-dotted
+*/
+@each $i in 0 1 2 3 4 5 6 7 8 9 10 20 25 {
+	.dg-bd-r-#{$i}{
+		border-radius: #{$i}px
+	}
+}
+/**
+*@description 圆角百分比
+*example dg-bd-s-dotted
+*/
+@each $i in 25 50 {
+	.dg-bd-r-pct-#{$i}{
+		border-radius: unquote('#{$i}%')
+	}
+}
+
+/**
+*@description margin和padding
+*example dg-m-16
+*example dg-p-16
+*/
+$mps: 0 8 16 24 32;
+@each $i in $mps{//margin 和 padding
+	.dg-m-#{$i}{
+		margin: #{$i}px
+	}
+	.dg-p-#{$i}{
+		padding: #{$i}px
+	}
+}
+@each $i in $mps{
+    /**
+    *example dg-m-t-b-16
+    *example dg-p-t-b-16
+    */
+    @each $abbr in 't-b', 'r-l' {
+        .dg-m-#{$abbr}-#{$i}{
+            @if $abbr == 't-b' {
+                margin-top: #{$i}px;
+                margin-bottom: #{$i}px;
+            } @else {
+                margin-right: #{$i}px;
+                margin-left: #{$i}px;
+            }
+        }
+        .dg-p-#{$abbr}-#{$i}{
+            @if $abbr == 't-b' {
+                padding-top: #{$i}px;
+                padding-bottom: #{$i}px;
+            } @else {
+                padding-right: #{$i}px;
+                padding-left: #{$i}px;
+            }
+        }
+    }
+    /**
+    *example dg-m-t-16
+    *example dg-p-t-16
+    */
+    @each $full, $abbr in (top: t, right: r, bottom: b, left: l) {
+		.dg-m-#{$abbr}-#{$i}{
+			margin-#{$full}: #{$i}px
+		}
+		.dg-p-#{$abbr}-#{$i}{
+			padding-#{$full}: #{$i}px
+		}
+	}
+}
+/**
+*@description 负的margin
+*example dg-m-t-b-loss-16
+*example dg-m-r-l-loss-16
+*/
+@each $i in 16 28 32 80{
+    @each $abbr in 't-b', 'r-l' {
+        .dg-m-#{$abbr}-loss-#{$i}{
+            @if $abbr == 't-b' {
+                margin-top: -#{$i}px;
+                margin-bottom: -#{$i}px;
+            } @else {
+                margin-right: -#{$i}px;
+                margin-left: -#{$i}px;
+            }
+        }
+    }
+    /**
+    *example dg-m-t-loss-16
+    *example dg-m-b-loss-16
+    */
+    @each $full, $abbr in (top: t, right: r, bottom: b, left: l) {
+		.dg-m-#{$abbr}-loss-#{$i}{
+			margin-#{$full}: -#{$i}px
+		}
+	}
+}
+/**
+*example dg-m-t-b-auto
+*example dg-m-r-l-auto
+*/
+@each $full, $abbr in (top: t, right: r, bottom: b, left: l) {
+    .dg-m-#{$abbr}-auto{
+        margin-#{$full}: auto;
+    }
+    @if $abbr == 'b' {
+        .dg-m-t-b-auto{
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    } @else if $abbr == 'l' {
+        .dg-m-r-l-auto{
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}
+/**
+*@description 元素盒子模型
+*example dg-flex
+*example dg-inline-block
+*/
+@each $i in none block inline inline-block flex grid {
+	.dg-#{$i}{
+		display: #{$i}
+	}
+}
+/**
+*@description 主轴的方向
+*example dg-flex-d-c
+*/
+@each $full, $abbr in (row: r, row-reverse: r-r, column: c, column-reverse: c-r) {
+    .dg-flex-d-#{$abbr}{
+		flex-direction: #{$full}
+	}
+}
+/**
+*@description 块占比
+*example dg-flex-1
+*example dg-flex-2
+*/
+@for $i from 1 through 5 {
+	.dg-flex-#{$i}{
+		flex: #{$i}
+	}
+}
+/**
+*@description 轴线
+*example dg-f-w-w
+*/
+@each $full, $abbr in (nowrap: no, wrap: w, wrap-reverse: w-r) {
+	.dg-flex-w-#{$abbr}{
+		flex-wrap: #{$full}
+	}
+}
+/**
+*@description 垂直方向对齐
+*example dg-a-i-c
+*/
+@each $full, $abbr in (flex-start: s, center: c, flex-end: e, stretch: stretch) {
+	.dg-a-i-#{$abbr}{
+		align-items: #{$full}
+	}
+}
+/**
+*@description 水平方向对齐
+*example dg-j-c-c
+*/
+@each $full, $abbr in (flex-start: s, center: c, end: e, space-between: s-b, space-around: s-a) {
+	.dg-j-c-#{$abbr}{
+		justify-content: #{$full}
+	}
+}
+/**
+*@description 块的宽和高,等比例px
+*example dg-w-h-100
+*/
+@each $i in 24 32 44 50 100{
+	.dg-w-h-#{$i}{
+		width: #{$i}px;
+		height: #{$i}px;
+	}
+}
+/**
+*@description 块的宽和高，任意比例px,key可以一样
+*example dg-w-h-10-14
+*/
+@each $w, $h in (10, 14), (120, 90) {
+	.dg-w-h-#{$w}-#{$h}{
+		width: #{$w}px;
+		height: #{$h}px;
+	}
+}
+/**
+*@description 块的宽和高，单位为%,key可以一样
+*example dg-w-h-pct-100
+*/
+@each $i in 0 50 100 {//元素的宽和高百分比
+	.dg-w-h-pct-#{$i}{
+		width: unquote('#{$i}%');
+		height: unquote('#{$i}%')
+	}
+	.dg-w-pct-#{$i}{
+		width: unquote('#{$i}%')
+	}
+	.dg-h-pct-#{$i}{
+		height: unquote('#{$i}%')
+	}
+}
+/**
+*@description 屏幕宽度和高度占比
+*example dg-w-h-pct-100
+*/
+.dg-w-vw-100{
+	width: 100vw
+}
+.dg-h-vh-100{
+	height: 100vh
+}
+/**
+*@description 块元素的高
+*example dg-h-16
+*/
+@each $i in 16 {
+	.dg-h-#{$i}{
+		height: #{$i}px
+	}
+}
+/**
+*@description 行高
+*example dg-l-h-0
+*/
+@each $i in 0 1 {
+	.dg-l-h-#{$i}{
+		line-height: #{$i}px
+	}
+}
+/**
+*@description 不透明度
+*example dg-o-2
+*/
+@for $i from 1 through 9 {
+	.dg-o-#{$i}{
+		opacity: unquote('.#{$i}')
+	}
+}
+/**
+*@description 定位
+*example dg-pos-r
+*/
+@each $full, $abbr in (relative: r, absolute: a, fixed: f, sticky: s) {
+	.dg-pos-#{$abbr}{
+		position: #{$full}
+	}
+}
+/**
+*@description 定位的值
+*example dg-pos-t-16
+*example dg-pos-t-loss-16
+*/
+@each $i in 0 16 32{
+	@each $full, $abbr in (top: t, right: r, bottom: b, left: l) {
+		.dg-pos-#{$abbr}-#{$i}{
+			#{$full}: #{$i}px
+		}
+		.dg-pos-#{$abbr}-loss-#{$i}{
+			#{$full}: -#{$i}px
+		}
+	}
+}
+/**
+*@description 层级
+*example dg-z-i-1
+*/
+@for $i from 1 through 10{
+	.dg-z-i-#{$i}{
+		z-index: #{$i}
+	}
+}
+/**
+*@description overflow
+*example dg-of-s
+*/
+@each $full, $abbr in (visible: v, hidden: h, scroll: s, auto: a) {
+	.dg-of-#{$abbr}{
+		overflow: #{$full}
+	}
+	.dg-of-y-#{$abbr}{
+		overflow-y: #{$full};
+		@if $full == scroll {
+			-webkit-overflow-scrolling:	touch
+		}
+		@if $full == auto {
+			-webkit-overflow-scrolling:	touch
+		}
+	}
+	.dg-of-x-#{$abbr}{
+		overflow-x: #{$full};
+		@if $full == scroll {
+			-webkit-overflow-scrolling:	touch
+		} @else if $full == auto{
+			-webkit-overflow-scrolling:	touch
+		}
+	}
+}
+/**
+*@description 图片的显示方式 （自动裁剪）
+*example dg-o-f-cover
+*/
+@each $full, $abbr in (fill: f, contain: contain, cover: cover, none: n, scale-down: s-d) {
+	.dg-o-f-#{$abbr}{
+		object-fit: #{$full}
+	}
+}

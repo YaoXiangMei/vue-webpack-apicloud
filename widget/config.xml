@@ -1,0 +1,34 @@
+<widget id="A6026425419159" version="1.0.0">
+	<name>
+		vue-webpack-apicloud
+	</name>
+	<description>
+
+	</description>
+	<author email="756006942@qq.com" href="https://github.com/YaoXiangMei">
+		meiyaoxiang
+	</author>
+	<content src="main_index.html" />
+	<access origin="*" />
+	<preference name="pageBounce" value="false" />
+	<preference name="appBackground" value="rgba(245,245,245,1)" />
+	<preference name="windowBackground" value="rgba(245,245,245,1)" />
+	<preference name="frameBackgroundColor" value="rgba(245,245,245,1)" />
+	<preference name="hScrollBarEnabled" value="false" />
+	<preference name="vScrollBarEnabled" value="false" />
+	<preference name="autoLaunch" value="true" />
+	<preference name="fullScreen" value="false" />
+	<preference name="autoUpdate" value="true" />
+	<preference name="smartUpdate" value="true" />
+	<preference name="debug" value="true" />
+	<preference name="statusBarAppearance" value="true" />
+	<preference name="urlScheme" value="hzyx" />
+	<permission name="readPhoneState" />
+	<permission name="camera" />
+	<permission name="record" />
+	<permission name="location" />
+	<permission name="fileSystem" />
+	<permission name="internet" />
+	<permission name="bootCompleted" />
+	<permission name="hardware" />
+</widget>
