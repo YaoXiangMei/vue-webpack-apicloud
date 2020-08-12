@@ -21,6 +21,9 @@ module.exports = {
   outputDir,
   productionSourceMap: false,
   pages,
+  devServer: {
+    index: 'main_index.html'
+  },
   chainWebpack: config => {
     // 解决html-webpack-plugin多页面打包慢的问题
     filenames.forEach(filename => {
