@@ -7,6 +7,14 @@
 3. 能在浏览器上预览开发
 ```
 
+## 视频演示
+##### 启动
+<video src="http://ad.qiniu.huishimed.com/1597228263918.mp4" width="480px" height="320px" controls="controls"></video>
+##### 演示
+<video src="http://ad.qiniu.huishimed.com/1597228263918.mp4" width="480px" height="320px" controls="controls"></video>
+
+
+
 ## 使用步骤说明
 ```
 这里使用vscode编辑器做为例子
