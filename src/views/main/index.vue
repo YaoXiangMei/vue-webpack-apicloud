@@ -1,7 +1,7 @@
 <template>
   <div>
     <header id="header" class="dg-bg-c-1e844d" />
-    <footer v-if="isShowFooter" id="footer" class="footer dg-pos-f dg-pos-b-0 dg-pos-l-0 dg-w-h-50 dg-w-vw-100 dg-bg-c-fff">
+    <footer id="footer" class="footer dg-pos-f dg-pos-b-0 dg-pos-l-0 dg-w-h-50 dg-w-vw-100 dg-bg-c-fff">
       <ul class="dg-flex dg-t-a-c dg-h-pct-100">
         <li
           v-for="({title}, index) in tabs"
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { TOKEN } from '@/plugins/types/prefs'
 
 export default {
   data () {
@@ -32,17 +31,9 @@ export default {
       activeIndex: 0
     }
   },
-  computed: {
-    isShowFooter () {
-      return !this.$tools.getPrefs(TOKEN)
-    }
-  },
   async mounted () {
-    if (!this.$tools.getPrefs(TOKEN)) {
-      this.$nextTick(() => { this.openFrameGroup() })
-    } else {
-      this.$tools.openWin({ name: 'login_index', url: 'login_index.html' })
-    }
+    this.$nextTick(() => { this.openFrameGroup() })
+
     this.$tools.closeApp()
   },
   methods: {
@@ -62,7 +53,7 @@ export default {
         footerOffset = $api.offset(footer)
       $api.fixTabBar(footer)
       let frames = [],
-        y = headerH - 1,
+        y = headerH,
         h = api.winHeight - headerH - footerOffset.h
       this.tabs.forEach(({ name }, index) => {
         frames.push({

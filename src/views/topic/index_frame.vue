@@ -4,6 +4,7 @@
       <ul>
         <li
           v-for="item in list" :key="item.id"
+          @click="handlerToDetail(item)"
           class="dg-flex dg-a-i-c dg-f-s-16 dg-p-16 dg-bd-b-efefef dg-bg-c-fff">
           <img :src="item.author.avatar_url" class="dg-w-h-24">
           <h3 class="dg-flex-1 dg-e-2 dg-m-l-16">
@@ -29,6 +30,17 @@ export default {
       rq: {
         limit: 15
       }
+    }
+  },
+  methods: {
+    handlerToDetail ({ id }) {
+      this.$tools.openWin({
+        name: 'topic_detail_index',
+        url: 'topic_detail_index.html',
+        pageParam: {
+          id
+        }
+      })
     }
   }
 }

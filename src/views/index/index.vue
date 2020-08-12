@@ -6,9 +6,6 @@
     <button @click="handlerOpenTopicGood" class="dg-block dg-p-t-b-8 dg-w-pct-100 dg-m-t-16">
       打开window, div滚动
     </button>
-    <button @click="handlerOpenTopicGood" class="dg-block dg-p-t-b-8 dg-w-pct-100 dg-m-t-16">
-      tools.js几个工具函数
-    </button>
     <button @click="handlerChangeVuexState" class="dg-block dg-p-t-b-8 dg-w-pct-100 dg-m-t-16">
       点击修改vuex数据，请在“我的”页面查看更新后的数据
     </button>
