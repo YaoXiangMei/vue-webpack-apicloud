@@ -1,11 +1,10 @@
 {
   "name": "ad-doctor-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service serve",
-    "dev_before": "cross-env NODE_ENV=development vue-cli-service build --color --mode test",
-    "serve": "vue-cli-service serve --color",
+    "serve_before": "cross-env NODE_ENV=development vue-cli-service build --color --mode test",
+    "serve": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service serve --color",
     "test": "vue-cli-service build --color --mode test",
     "build": "vue-cli-service build --color",
     "lint": "vue-cli-service lint"
@@ -15,6 +14,7 @@
     "core-js": "^2.6.5",
     "mescroll.js": "^1.4.1",
     "qs": "^6.9.0",
+    "tree-node-cli": "^1.4.0",
     "vue": "^2.6.10",
     "vuex": "^3.5.1",
     "vuex-persistedstate": "^3.0.1"
