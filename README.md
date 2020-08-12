@@ -12,11 +12,11 @@
 这里使用vscode编辑器做为例子
 
 1. 安装扩展APICloud，然后在该扩展的设置中将Apicloud: Subdirectories设置为"/dist"
-1. yarn install
-2. yarn run serve_before（生成dist目录，第一次才需要执行此命令）
-3. 在生成dist目录中找到config.xml文·件修改content字段的src为你本地的服务的地址(如：http://192.168.1.123:8080/main_index.html,"http://192.168.1.123:8080"是我本地的服务，你要改成你自己的),或者你在执行步骤2之前在src/config/development.xml修改也是可以的
+2. yarn install
+3. yarn run serve_before（生成dist目录，第一次才需要执行此命令）
 4. yarn run serve 启动项目
-5. 启动wifi服务
+5. 在生成dist目录中找到config.xml文·件修改content字段的src为你本地的服务的地址(如：http://192.168.1.123:8080/main_index.html,"http://192.168.1.123:8080"是我本地的服务，你要改成你自己的),或者你在执行步骤2之前在src/config/development.xml修改也是可以的
+6. 启动wifi服务
 ```
 ## 目录结构说明
 ```
