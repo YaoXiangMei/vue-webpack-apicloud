@@ -375,9 +375,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -503,14 +500,6 @@ var render = function() {
         on: { click: _vm.handlerOpenTopicGood }
       },
       [_vm._v("\n    打开window, div滚动\n  ")]
-    ),
-    _c(
-      "button",
-      {
-        staticClass: "dg-block dg-p-t-b-8 dg-w-pct-100 dg-m-t-16",
-        on: { click: _vm.handlerOpenTopicGood }
-      },
-      [_vm._v("\n    tools.js几个工具函数\n  ")]
     ),
     _c(
       "button",
@@ -14590,7 +14579,7 @@ vue__WEBPACK_IMPORTED_MODULE_8__["default"].config.silent = false;
 vue__WEBPACK_IMPORTED_MODULE_8__["default"].config.devtools = false;
 Object.assign(vue__WEBPACK_IMPORTED_MODULE_8__["default"].prototype, {
   $tools: _plugins_tools__WEBPACK_IMPORTED_MODULE_11__["default"]
-}); // 浏览器环境没有apiready事件，这里监听load事件执行apiready事件，开启浏览器中预览，但是浏览器中并没有apicloud的sdk，所以会报api is not defined
+}); // 浏览器环境没有apiready事件，这里监听load事件执行apiready事件，开启浏览器中预览
 
 if (false) { var platform; }
 

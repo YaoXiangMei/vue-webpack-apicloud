@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -14545,7 +14545,7 @@ vue__WEBPACK_IMPORTED_MODULE_8__["default"].config.silent = false;
 vue__WEBPACK_IMPORTED_MODULE_8__["default"].config.devtools = false;
 Object.assign(vue__WEBPACK_IMPORTED_MODULE_8__["default"].prototype, {
   $tools: _plugins_tools__WEBPACK_IMPORTED_MODULE_11__["default"]
-}); // 浏览器环境没有apiready事件，这里监听load事件执行apiready事件，开启浏览器中预览，但是浏览器中并没有apicloud的sdk，所以会报api is not defined
+}); // 浏览器环境没有apiready事件，这里监听load事件执行apiready事件，开启浏览器中预览
 
 if (false) { var platform; }
 
@@ -15953,7 +15953,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!*****************************************************!*\
   !*** multi ./src/main.js ./src/views/user/index.js ***!
   \*****************************************************/

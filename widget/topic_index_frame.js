@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -665,6 +665,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -679,6 +680,18 @@ __webpack_require__.r(__webpack_exports__);
         limit: 15
       }
     };
+  },
+  methods: {
+    handlerToDetail: function handlerToDetail(_ref) {
+      var id = _ref.id;
+      this.$tools.openWin({
+        name: 'topic_detail_index',
+        url: 'topic_detail_index.html',
+        pageParam: {
+          id: id
+        }
+      });
+    }
   }
 });
 
@@ -885,7 +898,12 @@ var render = function() {
                 {
                   key: item.id,
                   staticClass:
-                    "dg-flex dg-a-i-c dg-f-s-16 dg-p-16 dg-bd-b-efefef dg-bg-c-fff"
+                    "dg-flex dg-a-i-c dg-f-s-16 dg-p-16 dg-bd-b-efefef dg-bg-c-fff",
+                  on: {
+                    click: function($event) {
+                      return _vm.handlerToDetail(item)
+                    }
+                  }
                 },
                 [
                   _c("img", {
@@ -14283,19 +14301,24 @@ module.exports = g;
 /*!************************!*\
   !*** ./src/api/api.js ***!
   \************************/
-/*! exports provided: topics */
+/*! exports provided: topics, topic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "topics", function() { return topics; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "topic", function() { return topic; });
 /* harmony import */ var _http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./http */ "./src/api/http.js");
 
 var topics = function topics(params) {
   return _http__WEBPACK_IMPORTED_MODULE_0__["default"].get('v1/topics', {
     params: params
   });
-};
+}; // 列表
+
+var topic = function topic(id) {
+  return _http__WEBPACK_IMPORTED_MODULE_0__["default"].get("v1/topic/".concat(id));
+}; // 详情
 
 /***/ }),
 
@@ -14621,7 +14644,7 @@ vue__WEBPACK_IMPORTED_MODULE_8__["default"].config.silent = false;
 vue__WEBPACK_IMPORTED_MODULE_8__["default"].config.devtools = false;
 Object.assign(vue__WEBPACK_IMPORTED_MODULE_8__["default"].prototype, {
   $tools: _plugins_tools__WEBPACK_IMPORTED_MODULE_11__["default"]
-}); // 浏览器环境没有apiready事件，这里监听load事件执行apiready事件，开启浏览器中预览，但是浏览器中并没有apicloud的sdk，所以会报api is not defined
+}); // 浏览器环境没有apiready事件，这里监听load事件执行apiready事件，开启浏览器中预览
 
 if (false) { var platform; }
 
@@ -15840,7 +15863,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!************************************************************!*\
   !*** multi ./src/main.js ./src/views/topic/index_frame.js ***!
   \************************************************************/
