@@ -7,13 +7,6 @@
 3. 能在浏览器上预览开发
 ```
 
-## 视频演示
-##### 启动
-<video src="http://ad.qiniu.huishimed.com/1597228263918.mp4" width="480px" height="320px" controls="controls"></video>
-##### 演示
-<video src="http://ad.qiniu.huishimed.com/1597228263918.mp4" width="480px" height="320px" controls="controls"></video>
-
-
 
 ## 使用步骤说明
 ```
@@ -26,6 +19,11 @@
 5. 在生成dist目录中找到config.xml文·件修改content字段的src为你本地的服务的地址(如：http://192.168.1.123:8080/main_index.html,"http://192.168.1.123:8080"是我本地的服务，你要改成你自己的),或者你在执行步骤2之前在src/config/development.xml修改也是可以的
 6. 启动wifi服务
 ```
+## 视频演示
+视频链接 [效果演示](http://ad.qiniu.huishimed.com/1597228274236.mp4)
+
+视频链接 [启动](http://ad.qiniu.huishimed.com/1597228263918.mp4)
+
 ## 目录结构说明
 ```
 ├── .editorconfig
