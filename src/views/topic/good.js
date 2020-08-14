@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Index from './good.vue'
-import store from '@/store'
+// import store from '@/store'
 import { VUEX_STATE_CHANGE } from '@/plugins/types/event'
-window.apiready = function () {
+window.apiready = async function () {
+  const { default: store } = await import('@/store')
   new Vue({
     store,
     render: h => h(Index)

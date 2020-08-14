@@ -25,7 +25,22 @@ const modulesFiles = require.context('./modules', false, /\.js$/),
     strict: process.env.NODE_ENV === 'development',
     modules,
     plugins: [createPersistedState({
-      paths: ['user']
+      paths: ['user'],
+      storage: {
+        getItem: key => {
+          return api.getPrefs({
+            sync: true,
+            key
+          })
+        },
+        setItem: (key, value) => {
+          return api.setPrefs({
+            key,
+            value
+          })
+        },
+        removeItem: key => api.removePrefs(key)
+      }
     }), plugin]
   })
 

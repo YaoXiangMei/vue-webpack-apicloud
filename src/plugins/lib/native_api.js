@@ -43,31 +43,39 @@ const api = {
       window.history.length >= 1 && history.go(-1)
     },
     openFrame: (params) => {
+      console.log(params)
       const { origin } = location,
-        { name, y = 0, h = 0 } = params,
+        { url, y = 0, h = 0, pageParam } = params,
         iframe = document.createElement('iframe'),
         { width, height } = window.screen
       iframe.setAttribute('width', `${width}px`)
       iframe.setAttribute('height', `${height - y - h}px`)
       iframe.style.border = 'none'
-      iframe.src = `${origin}/${name}.html`
+      let src = `${origin}/${url}`
+      if (pageParam) {
+        src = `${src}?${qs.stringify(pageParam)}`
+      }
+      iframe.src = src
       document.body.appendChild(iframe)
     },
     openFrameGroup: (params) => {
       let { frames, index = 0, name, rect: { w = api.winWidth, h = api.winHeight } } = params,
-        div = document.createElement('div')
+        div = document.createElement('div'),
+        { origin } = location
       div.setAttribute('class', name)
       w = w === 'auto' ? api.winWidth : w
       h = h === 'auto' ? api.winHeight : h
-      window.fff = []
-      frames.forEach(({ url }, i) => {
+      frames.forEach(({ url, pageParam }, i) => {
         const iframe = document.createElement('iframe')
         iframe.setAttribute('width', `${w}px`)
         iframe.setAttribute('height', `${h}px`)
         iframe.style.display = index == i ? 'block' : 'none'
-        iframe.src = `${origin}/${url}`
+        let src = `${origin}/${url}`
+        if (pageParam) {
+          src = `${src}?${qs.stringify(pageParam)}`
+        }
+        iframe.src = src
         iframe.style.border = 'none'
-        window.fff.push(iframe)
         div.appendChild(iframe)
       })
       document.body.appendChild(div)
@@ -94,8 +102,15 @@ const api = {
         }, false)
       }
     },
-    getPrefs: () => {},
-    setPrefs: () => {},
+    getPrefs: ({ key }) => {
+      return localStorage.getItem(key)
+    },
+    setPrefs: ({ key, value }) => {
+      localStorage.setItem(key, value)
+    },
+    removePrefs: ({ key }) => {
+      localStorage.removeItem(key)
+    },
     pageParam: (() => {
       return qs.parse(location.search, { ignoreQueryPrefix: true }) || {}
     })(),
@@ -113,8 +128,10 @@ const api = {
     })(),
     ajax: async (params, cb) => {
       try {
-        const { method, url, data: { body } } = params,
-          data = await axios[method](url, METHODS.includes(method) ? body : { params: body })
+        const { method, url, data: { body }, headers } = params,
+          data = METHODS.includes(method)
+            ? await axios[method](url, body, { headers })
+            : await axios[method](url, { params: body, headers })
         cb(data)
       } catch (err) {
         cb(null, err)
